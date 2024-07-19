@@ -5,7 +5,7 @@ var pool=require('./pool')
 router.post('/checklogin', function(req, res, next) {
  console.log(req.body)   
  pool.query('select * from restaurants where email=? and password=?',[req.body.emailid,req.body.password],function(error,result){
-   if(result.error)
+   if(error)
    {
     res.status(200).json({status:false,data:[],message:'Server Error...'})
    }
